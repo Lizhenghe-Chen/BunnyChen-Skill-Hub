@@ -33,7 +33,7 @@ copilot-skills/
 | `daily-work-report` | 源自 2026-08-26 日报实际踩坑：本地 `session-store.db` 比云端完整、UTC+8 时区换算、用 `cwd` 跨项目定位 git 仓库（2026-08-27 会话，commit `f2977f4`） | [Agent Skills 开放标准](https://agentskills.io/) |
 | `code-quality` | 源自用户搜集的网络方案经 Kimi 大模型评估后的精简版（2026-08-27 会话：采纳「红线/验证必填/自我质疑」，拒绝过度设计；commit `8545c8f`、`08c5da8`） | [Agent Skills 开放标准](https://agentskills.io/)、[VS Code Agent Skills 官方文档](https://code.visualstudio.com/docs/agent-customization/agent-skills) |
 | `frontend-design` | 源自 2026-08-27 会话：以用户指定的 [taste-skill](https://github.com/Leonxlnx/taste-skill) 全部子技能为方法论主体，`references/` 各文档（`anti-ai-slop` / `motion` / `redesign` / `style-directions`）均标注其来源；落地范例为自有记账应用的真实项目（未提交 commit，`skills/frontend-design/` 待入库） | [taste-skill](https://github.com/Leonxlnx/taste-skill)、[Agent Skills 开放标准](https://agentskills.io/) |
-| `book-notes-ocr` | 源自 2026-08-30 会话：为《巴顿的领导艺术》18 张书页截图做 OCR 与读书笔记的完整工作流（目录整理 → macOS Vision OCR → 笔记整理）；脚本经实测稳定运行，完整示例见本机 `~/Downloads/New Folder With Items/《巴顿的领导艺术》/` | [Agent Skills 开放标准](https://agentskills.io/) |
+| `book-notes-ocr` | 源自 2026-08-30 会话：为《巴顿的领导艺术》18 张书页截图做 OCR 与读书笔记的完整工作流（目录整理 → macOS Vision OCR → 笔记整理）；脚本经实测稳定运行，完整示例见本机示例目录（`《书名》/Images/` → `《书名》读书笔记.md`） | [Agent Skills 开放标准](https://agentskills.io/) |
 
 ## 设计规范
 

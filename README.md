@@ -1,5 +1,7 @@
 # Copilot Skills（个人全局技能库）
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 本仓库用于托管个人**全局 Copilot Skills**，实现跨项目、跨设备同步。
 
 > VS Code 的 Settings Sync 不会同步 `~/.copilot/skills/` 下的技能，因此用 git 仓库统一管理、手动安装到每台机器。
@@ -64,7 +66,7 @@ git pull
 
 - `install.sh` 通过**软链接**把 `skills/*` 链接到目标技能目录（默认 `~/.copilot/skills/`），便于 `git pull` 后立即生效
 - 技能目录结构、各技能详情、诞生依据与设计规范见 [SKILLS.md](./SKILLS.md)
-- 如遇跨境网络问题，先设置代理再执行 git 操作，例如：
+- 如遇跨境网络问题，先设置代理再执行 git 操作，例如（**请替换为你自己的代理地址**，如 Clash 默认 `7890` 端口）：
   ```bash
-  export https_proxy=http://127.0.0.1:7897 http_proxy=http://127.0.0.1:7897 all_proxy=socks5://127.0.0.1:7897
+  export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
   ```

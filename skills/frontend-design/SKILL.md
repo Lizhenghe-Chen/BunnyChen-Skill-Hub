@@ -7,7 +7,7 @@ argument-hint: '描述界面类型、目标用户与风格关键词，如"一个
 # Frontend Design（前端设计品味）
 
 目标：让界面**不像 AI 生成的模板**——有明确设计主张、有辨识度、有交互感，同时桌面/移动端都成立、性能与可访问性达标。
-方法论主体：[taste-skill](https://github.com/Leonxlnx/taste-skill)（含其全部子技能）；落地范例：自有记账应用的真实项目。
+方法论主体：[taste-skill](https://github.com/Leonxlnx/taste-skill)（含其全部子技能，MIT License · Copyright © 2026 Leonxlnx）；落地范例：自有记账应用的真实项目。
 
 ## 工作流（三步，别跳）
 
