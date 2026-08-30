@@ -94,3 +94,25 @@ git -C <cwd> log --since="YYYY-MM-DD 00:00" --until="YYYY-MM-DD 23:59" --pretty=
 ```
 
 找不到 `cwd` 或目录不存在的就跳过，不要臆造提交。
+
+## 4. 其他平台数据源（非 VS Code Copilot 的降级方案）
+
+在 Claude Code / Cursor / OpenCode / Codex CLI 等平台没有 `session-store.db`，改用以下数据源降级汇总（能拿到多全面就汇总多全面，缺失部分如实说明，不要编造）：
+
+### Claude Code 会话记录
+
+- 位置：`~/.claude/projects/<项目路径编码>/` 下的 `.jsonl` 会话日志（内含 user/assistant 消息，可 grep 按日期/关键词过滤）
+- 定位：`find ~/.claude -name '*.jsonl'`；路径随版本变化，以实际为准
+
+### 通用数据源（所有平台可用）
+
+| 数据源 | 方法 |
+| --- | --- |
+| git 历史 | 见上文第 3 节：`git log --since= --until=` |
+| shell 历史 | `grep '<日期>' ~/.zsh_history` 或 `~/.bash_history` |
+| 文件系统最近修改 | `find <项目目录> -newermt 'YYYY-MM-DD' -type f -not -path '*/node_modules/*' -not -path '*/.git/*'` |
+| 项目文档/约定 | `CLAUDE.md`、`AGENTS.md`、`README.md` 等记录的工作内容 |
+
+### 汇总裁决
+- 数据源按可用性从高到低取用；跨平台时以「会话记录 > git 历史 > 文件系统改动」为序
+- 目标日期无任何记录时，如实说明，不要编造

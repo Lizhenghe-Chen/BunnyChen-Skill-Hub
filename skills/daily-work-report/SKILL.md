@@ -1,12 +1,17 @@
 ---
 name: daily-work-report
-description: '汇总生成日/周工作报告，跨所有项目、workspace、对话与 git 历史。使用场景：用户要求"总结昨天/本周/某几天的日报"、"汇总这段时间做了什么"、"输出工作汇报"，或需要跨多个仓库归纳提交、会话与改动。核心数据源为本地 Copilot 会话数据库（session-store.db，最完整），辅以云端会话存储、git 历史与记忆。'
+description: '汇总生成日/周工作报告，跨所有项目、workspace、对话与 git 历史。使用场景：用户要求"总结昨天/本周/某几天的日报"、"汇总这段时间做了什么"、"输出工作汇报"，或需要跨多个仓库归纳提交、会话与改动。主数据源为 VS Code Copilot 本地会话库（session-store.db，最完整），辅以云端会话存储、git 历史与记忆；非 VS Code 平台的降级方案见参考文档。'
 argument-hint: '指定日期或范围，如"昨天"、"8月25到26日"、"本周"'
 ---
 
 # Daily Work Report（日工作报告汇总）
 
-跨项目、跨 workspace 汇总 Copilot 会话、git 提交与记忆，生成结构化日/周工作汇报。
+跨项目、跨 workspace 汇总 AI 助手会话、git 提交与记忆，生成结构化日/周工作汇报。
+
+## 平台兼容性
+
+- 本技能为 **VS Code Copilot** 深度适配：主数据源为本地 Copilot 会话库 `session-store.db`（最完整），用 `sqlite3` 直接查询。
+- 在 Claude Code / Cursor / OpenCode 等其他平台：无该会话库，改用该平台可用的活动数据（git 历史、CLAUDE.md、shell 历史、文件系统最近修改等）降级汇总，具体见 [参考文档](./references/REFERENCE.md) 的「其他平台数据源」。
 
 ## 目标
 
@@ -34,12 +39,12 @@ argument-hint: '指定日期或范围，如"昨天"、"8月25到26日"、"本周
 - 若用户指定范围（如「这周 25 到 26 日」），解析为目标日期区间 `[start, end)`（不含 end 当天 0 点）。
 - 所有日期先按目标时区换算，再按天分组。
 
-### 2. 读取本地会话库（主数据源）
+### 2. 读取本地会话库（主数据源，VS Code Copilot）
 用 `sqlite3` 查询本地库，按换算后的日期过滤目标区间；对每个会话再读 `turns`
 理解实际工作内容，并按需查 `session_files` 识别涉及文件/组件。
 具体 SQL 见 [参考文档](./references/REFERENCE.md)。
 
-### 3. 用云端会话存储补充（可选）
+### 3. 用云端会话存储补充（可选，VS Code Copilot）
 若本地库缺数据或想核对，用 `session_store_sql`（DuckDB 语法）查询。
 注意：云端可能只包含部分会话；若两者不一致，**以本地库为准**并在报告中说明。
 
@@ -48,7 +53,7 @@ argument-hint: '指定日期或范围，如"昨天"、"8月25到26日"、"本周
 `cwd`/`repository` 字段获取**（跨 workspace 定位项目的可靠来源，SQL 见
 [参考文档](./references/REFERENCE.md)）；拿到路径后跑 `git log`，目录不存在就跳过，不臆造提交。
 
-### 5. 查看记忆（可选）
+### 5. 查看记忆（可选，VS Code Copilot）
 检查 `/memories/session/` 是否有当日任务记录，补充上下文；有 `repo/` 记忆时了解项目约定。
 
 ### 6. 汇总输出

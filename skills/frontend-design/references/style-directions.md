@@ -1,6 +1,6 @@
 # 风格方向库与落地范例
 
-> 定调后的选择表：风格关键词 → 基调 → 设计基因。融合 taste-skill 的设计系统映射、各风格子技能（minimalist / soft / brutalist / gpt-taste / stitch）与自有记账应用落地经验。
+> 定调后的选择表：风格关键词 → 基调 → 设计基因。融合 taste-skill 的设计系统映射、各风格子技能（minimalist / soft / brutalist / gpt-taste / stitch）与真实项目落地经验。
 
 ## 基调推断（低/中/高）
 | 风格关键词 | 布局气质 | 动效强度 | 信息密度 |
@@ -23,7 +23,7 @@
 | Atlassian 风 | `@atlaskit/*` |
 | GitHub 风开发者工具 | `@primer/css` / `@primer/react-brand` |
 | 英/美政务 | `govuk-frontend` / `uswds` |
-| 现代 React 基础 | Radix Themes；自有组件用 shadcn/ui（禁默认态） |
+| 现代 React 基础 | Radix Themes；自研组件用 shadcn/ui（禁默认态） |
 
 规则：一套系统一个项目，不混用；选了官方包就用它的 token，不要改 90% 后再手写。
 
@@ -36,7 +36,7 @@
 | Awwwards 风（gpt-taste） | AIDA 结构（Hero→Bento→滚动叙事→CTA）、2-3 行宽标题 `clamp(3rem,5vw,5.5rem)`、`grid-flow-dense` Bento、GSAP 钉住/堆叠/擦除、图片加 CSS 滤镜去股票感 |
 | 粗野 / 工业风（brutalist） | 瑞士排版 + 军用终端：全大写超紧排 `clamp(4rem,10vw,15rem)`、0 圆角、可见网格线、单色 + 警示红、等宽元数据、扫描线/半调纹理 |
 
-## 自有项目落地范例（应用类 UI 可直接借鉴）
+## 通用落地范例（应用类 UI 可直接借鉴）
 - **撞色标识**：KPI 卡左侧 3px 彩色竖条，每卡一色（绿/橙/蓝/紫）；图表 10 色调色板保证扇区区分度
 - **主题三态**：亮/暗/跟随系统用 CSS 变量；暗色提亮提饱和，避免近黑吞掉主题色；5 套配色预设动态注入 `<style>`
 - **玻璃渐变背景**：body 微纹理 + 光晕 + 底层纯色，页面四层共用，保证状态栏区与内容区背景一致
