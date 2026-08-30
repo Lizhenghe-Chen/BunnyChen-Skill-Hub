@@ -1,4 +1,4 @@
-# Copilot Skills（个人全局技能库）
+# BunnyChen Skill Hub（个人全局 Copilot Skills）
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -22,12 +22,12 @@
 ```bash
 # 1. 克隆本仓库（私有仓库；跨境网络需要时先设置代理）
 #    HTTPS（推荐，配合 macOS keychain 免密）：
-git clone https://github.com/Lizhenghe-Chen/copilot-skills.git
+git clone https://github.com/Lizhenghe-Chen/BunnyChen-Skill-Hub.git
 #    或 SSH（需已配置 SSH key）：
-git clone git@github.com:Lizhenghe-Chen/copilot-skills.git
+git clone git@github.com:Lizhenghe-Chen/BunnyChen-Skill-Hub.git
 
 # 2. 一键安装（软链接，之后 git pull 自动更新）
-cd copilot-skills
+cd BunnyChen-Skill-Hub
 ./install.sh
 # 可选：同时安装到 Claude Code（~/.claude/skills）
 # ./install.sh --claude
@@ -47,7 +47,7 @@ cd copilot-skills
 ## 更新技能
 
 ```bash
-cd copilot-skills
+cd BunnyChen-Skill-Hub
 git pull
 # install.sh 使用软链接，拉取后即生效，无需重新执行（除非新增技能）
 ```

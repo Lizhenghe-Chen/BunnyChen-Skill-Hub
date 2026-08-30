@@ -5,7 +5,7 @@
 ## 目录结构
 
 ```
-copilot-skills/
+BunnyChen-Skill-Hub/
 ├── skills/                 # 每个技能一个文件夹
 │   └── daily-work-report/
 │       ├── SKILL.md                # 主指令（精简，通用流程）
