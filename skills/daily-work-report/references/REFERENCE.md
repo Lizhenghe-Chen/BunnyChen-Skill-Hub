@@ -25,17 +25,20 @@
 
 ### 常用 SQL
 
-**按日期过滤会话列表（日期区间用 `[start, end)`，避免漏掉跨午夜会话）：**
+**按日期过滤会话列表（日期区间用 `[start, end)`；同时匹配 `created_at` 与 `updated_at`，后者用于捕获跨天会话）：**
 
 ```bash
 DB="$HOME/Library/Application Support/Code/User/globalStorage/github.copilot-chat/session-store.db"
 sqlite3 -header -column "$DB" "SELECT id, agent_name, repository, branch,
   datetime(created_at, '+8 hours') AS local_created,
+  datetime(updated_at, '+8 hours') AS local_updated,
   substr(summary,1,120) AS summary
   FROM sessions
-  WHERE date(datetime(created_at, '+8 hours')) >= 'YYYY-MM-DD'
-    AND date(datetime(created_at, '+8 hours')) <  'YYYY-MM-DD'
-  ORDER BY local_created;"
+  WHERE ( date(datetime(created_at, '+8 hours')) >= 'YYYY-MM-DD'
+      AND date(datetime(created_at, '+8 hours')) <  'YYYY-MM-DD' )
+     OR ( date(datetime(updated_at, '+8 hours')) >= 'YYYY-MM-DD'
+      AND date(datetime(updated_at, '+8 hours')) <  'YYYY-MM-DD' )
+  ORDER BY local_updated;"
 ```
 
 **读取某个会话的对话（用户消息 + 助手回复，用于判断实际做了什么）：**
@@ -45,6 +48,18 @@ sqlite3 -header -column "$DB" "SELECT turn_index,
   substr(replace(replace(user_message,char(10),' '),char(13),' '),1,200) AS user_msg,
   substr(replace(replace(assistant_response,char(10),' '),char(13),' '),1,200) AS asst_msg
   FROM turns WHERE session_id = '<SESSION_ID>' ORDER BY turn_index;"
+```
+
+**跨天会话：只取目标日期当天的 turns（`turns.timestamp` 为 UTC，需同样换算）：**
+
+```bash
+sqlite3 -header -column "$DB" "SELECT turn_index,
+  datetime(timestamp, '+8 hours') AS ts,
+  substr(replace(replace(user_message,char(10),' '),char(13),' '),1,200) AS user_msg
+  FROM turns WHERE session_id = '<SESSION_ID>'
+    AND date(datetime(timestamp, '+8 hours')) >= 'YYYY-MM-DD'
+    AND date(datetime(timestamp, '+8 hours')) <  'YYYY-MM-DD'
+  ORDER BY turn_index;"
 ```
 
 **获取会话涉及的文件/组件：**
