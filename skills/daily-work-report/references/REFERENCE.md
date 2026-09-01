@@ -3,7 +3,7 @@
 > 本文件集中存放 `daily-work-report` 的环境特定细节（路径、schema、SQL、时区）。
 > 换设备 / 换时区时，只需调整本文件即可，主流程 `../SKILL.md` 无需改动。
 
-## 1. 本地会话库（主数据源）
+## 1. 本地会话库（参考源之一，最完整）
 
 ### 路径（macOS）
 
@@ -65,9 +65,9 @@ sqlite3 -header -column "$DB" "SELECT DISTINCT cwd, repository FROM sessions
 
 > 已核实：`sessions` 表含 `cwd` 列（另含 `host_type`）。
 
-## 2. 云端会话存储（补充，可选）
+## 2. 云端会话存储（参考源）
 
-用 `session_store_sql` 工具查询（DuckDB 语法），仅作核对：
+用 `session_store_sql` 工具查询（DuckDB 语法），与本地库互为参考源：
 
 ```sql
 SELECT session_id, repository, branch,
@@ -83,7 +83,8 @@ ORDER BY local_created;
 - `sessions(session_id, repository, branch, summary, agent_name, ...)`
 - `turns(session_id, turn_index, user_message, assistant_response)`
 
-> 云端可能只同步了部分会话；与本地库不一致时**以本地库为准**。
+> 云端覆盖跨设备会话，可能包含本地缺失的部分；与本地库结果合并去重，
+> 不一致时以信息更完整的一方为准。
 
 ## 3. git 历史（可选增强）
 

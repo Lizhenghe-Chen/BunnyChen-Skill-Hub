@@ -10,12 +10,12 @@
 
 ## 包含技能
 
-| 技能                  | 用途                                                        |
-| --------------------- | ----------------------------------------------------------- |
+| 技能                  | 用途                                                                         |
+| --------------------- | ---------------------------------------------------------------------------- |
 | `daily-work-report` | 跨所有项目、会话与 git 历史汇总生成日/周工作报告（VS Code Copilot 深度适配） |
-| `code-quality`      | 代码质量审查与主动优化（简洁、鲁棒、可维护）                |
-| `frontend-design`   | 前端设计品味（桌面+移动端通用）：反 AI 模板化、有辨识度的设计原则与动效规范 |
-| `book-notes-ocr`    | 书页截图批量 OCR 并整理为读书笔记（仅 macOS：Swift + Vision，零第三方依赖） |
+| `code-quality`      | 代码质量审查与主动优化（简洁、鲁棒、可维护）                                 |
+| `frontend-design`   | 前端设计品味（桌面+移动端通用）：反 AI 模板化、有辨识度的设计原则与动效规范  |
+| `book-notes-ocr`    | 书页截图批量 OCR 并整理为读书笔记（仅 macOS：Swift + Vision，零第三方依赖）  |
 
 ## 安装（在新设备上）
 
@@ -33,17 +33,17 @@ cd BunnyChen-Skill-Hub
 
 ### install.sh 选项
 
-| 命令                          | 说明                                                                   |
-| ----------------------------- | ---------------------------------------------------------------------- |
-| `./install.sh`              | 安装到 `~/.copilot/skills`（VS Code Copilot）                          |
-| `./install.sh --claude`     | 安装到 `~/.claude/skills`（Claude Code；Cursor / OpenCode 兼容加载）  |
-| `./install.sh --cursor`     | 安装到 `~/.cursor/skills`（Cursor）                                    |
-| `./install.sh --opencode`   | 安装到 `~/.config/opencode/skills`（OpenCode）                         |
-| `./install.sh --codex`      | 安装到 `~/.codex/skills`（OpenAI Codex CLI）                           |
-| `./install.sh --agents`     | 安装到 `~/.agents/skills`（跨平台兼容目录，Cursor / OpenCode 通用）   |
-| `./install.sh --all`        | 安装到以上全部平台                                                      |
-| `./install.sh --uninstall`  | 移除已安装的软链接                                                      |
-| `./install.sh --help`       | 显示帮助                                                                |
+| 命令                         | 说明                                                                  |
+| ---------------------------- | --------------------------------------------------------------------- |
+| `./install.sh`             | 安装到`~/.copilot/skills`（VS Code Copilot）                        |
+| `./install.sh --claude`    | 安装到`~/.claude/skills`（Claude Code；Cursor / OpenCode 兼容加载） |
+| `./install.sh --cursor`    | 安装到`~/.cursor/skills`（Cursor）                                  |
+| `./install.sh --opencode`  | 安装到`~/.config/opencode/skills`（OpenCode）                       |
+| `./install.sh --codex`     | 安装到`~/.codex/skills`（OpenAI Codex CLI）                         |
+| `./install.sh --agents`    | 安装到`~/.agents/skills`（跨平台兼容目录，Cursor / OpenCode 通用）  |
+| `./install.sh --all`       | 安装到以上全部平台                                                    |
+| `./install.sh --uninstall` | 移除已安装的软链接                                                    |
+| `./install.sh --help`      | 显示帮助                                                              |
 
 ## 更新技能
 
