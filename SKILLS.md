@@ -11,7 +11,9 @@ BunnyChen-Skill-Hub/
 │       ├── SKILL.md                # 主指令（精简，通用流程）
 │       └── references/             # 可选资源：环境细节/参考文档（按需加载）
 │           └── REFERENCE.md
-├── install.sh              # 一键安装（多平台，支持 --claude / --cursor / --all 等）
+├── install.sh              # 一键安装（macOS / Linux / Git Bash，支持 --claude / --cursor / --all 等）
+├── install.ps1             # Windows 原生安装（参数与 install.sh 一一对应，如 -Claude / -All）
+├── install.cmd             # Windows 便捷入口（双击可用，参数透传给 install.ps1）
 └── README.md
 ```
 
@@ -38,5 +40,6 @@ BunnyChen-Skill-Hub/
 ## 设计规范
 
 - 技能遵循 [Agent Skills 开放标准](https://agentskills.io/)：目录名 = frontmatter `name`；`description` 描述「做什么 + 何时用」；长内容拆到 `references/` 按需加载
+- 安装统一采用**链接**（macOS / Linux 为软链接；Windows 为符号链接，不可用时回退目录联接 Junction），使 `git pull` 后即时生效
 - 结构合规性（目录、frontmatter、软链接安装方式）对照 [VS Code Agent Skills 官方文档](https://code.visualstudio.com/docs/copilot/customization/agent-skills) 与 [agentskills.io](https://agentskills.io/) 逐项校验，并据此完成拆分 `references/` 等优化
 - **对标参考（非内容直接引用）**：整体结构对标 [anthropics/skills](https://github.com/anthropics/skills)（Agent Skills 规范的官方实现仓库，`spec/` + `template/`，即 agentskills.io 标准的出处）与 [obra/superpowers](https://github.com/obra/superpowers)（可组合技能集 + 自动触发的工作流方法论，其 `verification-before-completion` 与 `code-quality` 的「验证必填」理念呼应）
