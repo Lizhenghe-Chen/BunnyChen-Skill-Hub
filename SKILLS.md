@@ -22,7 +22,7 @@ BunnyChen-Skill-Hub/
 | 技能 | 用途 | 附带资源 |
 | --- | --- | --- |
 | `daily-work-report` | 跨所有项目、会话与 git 历史汇总生成日/周工作报告（VS Code Copilot 深度适配） | `references/REFERENCE.md` |
-| `code-quality` | 代码质量审查与主动优化（简洁、鲁棒、可维护） | — |
+| `code-quality` | 按请求审查或优化代码：简洁、复用、性能与内存，兼顾兼容性和验证 | [性能与内存参考](skills/code-quality/references/performance-memory.md) |
 | `frontend-design` | 前端设计品味（桌面+移动端通用）：反 AI 模板化、有辨识度的设计原则与动效规范 | `references/`（`anti-ai-slop` / `motion` / `redesign` / `style-directions`） |
 | `book-notes-ocr` | 书页截图批量 OCR 并整理为读书笔记（仅 macOS：Swift + Vision，零第三方依赖） | `references/REFERENCE.md`、`scripts/ocr_script.swift` |
 
@@ -33,7 +33,7 @@ BunnyChen-Skill-Hub/
 | 技能 | 设计来源 |
 | ---- | -------- |
 | `daily-work-report` | 跨项目/跨会话的工作汇总方法论：以本地活动数据（VS Code Copilot 会话库）为主，辅以云端会话存储与 git 历史 |
-| `code-quality` | 代码质量审查方法论：简洁 / 鲁棒 / 可维护，配「红线 / 验证必填 / 自我质疑」三原则 |
+| `code-quality` | 以 [Google 代码审查指南](https://google.github.io/eng-practices/review/reviewer/looking-for.html)与[审查标准](https://google.github.io/eng-practices/review/reviewer/standard.html)为参考，按请求执行、按证据判断、按风险验证；性能与内存参考中就近标注测量及诊断的官方来源 |
 | `frontend-design` | [taste-skill](https://github.com/Leonxlnx/taste-skill) 全部子技能为方法论主体，`references/` 各文档（`anti-ai-slop` / `motion` / `redesign` / `style-directions`）均标注其来源 |
 | `book-notes-ocr` | macOS 原生 Vision 框架 OCR + 结构化读书笔记整理流程（零第三方依赖） |
 
